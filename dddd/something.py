@@ -4,7 +4,6 @@ from OpenGL.GL import *
 from OpenGL.GLU import *
 from OpenGL.GLUT import *
 from model import *
-from console import *
 import random
 import os, sys
 
@@ -20,8 +19,6 @@ icon.set_alpha(0)
 pygame.display.set_icon(icon)
 
 surface = pygame.display.set_mode(screen_size, OPENGL|DOUBLEBUF)
-
-console = Console()
 
 def resize((width, height)):
     if height == 0:
@@ -54,14 +51,6 @@ def getinput():
         if event.type == QUIT or key[K_ESCAPE]:
             pygame.quit()
             sys.exit()
-        if event.type == KEYDOWN:
-            if key[K_BACKQUOTE]:
-                if console.visible:
-                    console.visible = False
-                    init()
-                else:
-                    console.visible = True
-                console.write("this is an argument: {0}", ['an argument'], (255,255,255), 0, 0)
         
 
 def draw(objects):
