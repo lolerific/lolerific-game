@@ -51,20 +51,17 @@ def getinput():
         if event.type == QUIT or key[K_ESCAPE]:
             pygame.quit()
             sys.exit()
-        
 
 def draw(objects):
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
     glLoadIdentity()
-
-    glTranslate(0, 0, -5)
+    
+    glTranslate(0, 0, -10)
     for obj in objects:
         glCallList(obj.gl_list)
 
-    if console.visible:
-        console.draw()
     pygame.display.flip()
-
+    
 def main():
     obj = OBJ('untitled.obj')
     resize(screen_size)
@@ -75,9 +72,9 @@ def main():
         draw([obj])
 
 if __name__ == '__main__':
-    #try:
-    main()
-    #except Exception, e:
-     #   print '%s: %s' % (e.__class__.__name__, e)
-      #  raw_input('')
+    try:
+        main()
+    except Exception, e:
+        print '%s: %s' % (e.__class__.__name__, e)
+        raw_input('')
     
