@@ -6,6 +6,7 @@ inputs = []
 current_input = None
 
 def IS_SetInputTarget(target):
+    global current_input
     current_input = target
 
 class InputGrabber(object):
@@ -15,7 +16,6 @@ class InputGrabber(object):
 
     def grab(self):
         self.keys = pygame.key.get_pressed()
-        current_input = self
 
 class DefaultInputGrabber(InputGrabber):
     def __init__(self):
@@ -28,6 +28,7 @@ class DefaultInputGrabber(InputGrabber):
             sys.exit()
 
 def IS_GetInput():
+    global current_input
     pygame.event.pump()
     key = pygame.key.get_pressed()
     current_input.grab()

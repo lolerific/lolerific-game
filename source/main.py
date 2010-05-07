@@ -21,11 +21,11 @@ pygame.display.set_icon(icon)
 surface = pygame.display.set_mode(screen_size, OPENGL|DOUBLEBUF)
     
 def main():
-    i = DefaultInputGrabber()
     obj = OBJ('untitled.obj')
     GL_Resize(screen_size)
     GL_Init()
 
+    i = DefaultInputGrabber()
     IS_SetInputTarget(i)
     while True:
         IS_GetInput()
