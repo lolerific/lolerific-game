@@ -1,5 +1,8 @@
 from math import *
 
+def ML_RoundTo(n, r, t):
+    return t(n+(r-n))
+
 origin = [0,0,0]
 
 def ML_VectorAdd(a, b, c, t=float):
@@ -34,13 +37,13 @@ def ML_VectorColliding(a, b):
     return ML_VectorNear(a, b, 0)
 
 def ML_VectorLength(a):
-    return sqrt((a[0]^2)+(a[1]^2)+(a[2]^2))
+    return sqrt((a[0]**2.0)+(a[1]**2.0)+(a[2]**2.0))
 
 def ML_VectorNormal(a):
     L = ML_VectorLength(a)
-    a[0] = a[0] / L
-    a[1] = a[1] / L
-    a[2] = a[2] / L
+    a[0] = float(a[0]) / L
+    a[1] = float(a[1]) / L
+    a[2] = float(a[2]) / L
 
 def ML_VectorDot(a, b):
     return (a[0]*b[0])+(a[1]*b[1])+(a[2]*b[2])
@@ -48,7 +51,6 @@ def ML_VectorDot(a, b):
 def ML_VectorFacing(a, b):
     ML_VectorNormal(a)
     ML_VectorNormal(b)
-    return degrees(acos(ML_VectorDot(a, b)))
+    return degrees(acos(ML_RoundTo(ML_VectorDot(a, b), 1, int)))
 
-def ML_RoundTo(n, r, t):
-    return t(n+(r-n))
+print ML_VectorFacing([1.0,1.0,1.0], [2.0,2.0,2.0])
