@@ -51,6 +51,6 @@ def ML_VectorDot(a, b):
 def ML_VectorFacing(a, b):
     ML_VectorNormal(a)
     ML_VectorNormal(b)
-    return degrees(acos(ML_RoundTo(ML_VectorDot(a, b), 1, int)))
+    return degrees(acos(ML_VectorDot(a, b)))
 
 print ML_VectorFacing([1.0,1.0,1.0], [2.0,2.0,2.0])
