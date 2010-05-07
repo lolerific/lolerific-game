@@ -21,18 +21,16 @@ pygame.display.set_icon(icon)
 surface = pygame.display.set_mode(screen_size, OPENGL|DOUBLEBUF)
     
 def main():
+    i = DefaultInputGrabber()
     obj = OBJ('untitled.obj')
     GL_Resize(screen_size)
     GL_Init()
 
+    IS_SetInputTarget(i)
     while True:
         IS_GetInput()
         GL_Draw([obj])
 
 if __name__ == '__main__':
-    try:
-        main()
-    except Exception, e:
-        print '%s: %s' % (e.__class__.__name__, e)
-        raw_input('')
+    main()
     
