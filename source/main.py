@@ -24,17 +24,6 @@ surface = pygame.display.set_mode(screen_size, OPENGL|DOUBLEBUF)
 
 entityController = EntityController()
 
-class Test(BaseEntity):
-    def __init__(self):
-        BaseEntity.__init__(self)
-        BaseEntity.setNextThink(self, entityController.curtime + 1.0)
-
-    def think(self):
-        print 'thunk'
-        BaseEntity.setNextThink(self, entityController.curtime + 1.0)
-
-linkEntityToClass('test', Test)
-
 def main():
     obj = OBJ('untitled.obj')
     GL_Resize(screen_size)
@@ -42,8 +31,6 @@ def main():
 
     i = DefaultInputGrabber()
     IS_SetInputTarget(i)
-
-    ent = createEntity('test', 'test1')
 
     entityController.startupEntities()
     while True:
