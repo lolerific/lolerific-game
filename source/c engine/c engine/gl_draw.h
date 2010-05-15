@@ -1,0 +1,1 @@
+int GL_DrawScene();
